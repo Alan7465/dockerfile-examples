@@ -6,7 +6,7 @@ node ('dockerserver') {
         def customImage = docker.build("docker-image:${env.BUILD_ID}", "-f ./apache/Dockerfile .")
         
         stage "test copying files"
-        customImage.withRun('-v $PWD:/workspace -u root') {
+        customImage.withRun('-v $PWD:/app -u root') {
             /* Run some tests which require MySQL */
             sh 'touch /app/test.html && ls' // can see that test.html is generated
         }
