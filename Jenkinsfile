@@ -6,9 +6,13 @@ node ('dockerserver') {
         def customImage = docker.build("docker-image:${env.BUILD_ID}", "-f ./apache/Dockerfile .")
         
         stage "test copying files"
-        customImage.inside('-v $PWD:/app -u root') {
+        customImage.inside('-v $WORKSPACE:/output -u root') {
             /* Run some tests which require MySQL */
-            sh 'ls /app && touch /app/test.html && ls /app' // can see that test.html is generated
+            sh """
+            ls /output
+            touch /app/test.html && ls /app
+            cp /app/test.html /output
+            """ 
         }
         archiveArtifacts artifacts: '*.html'
 }
