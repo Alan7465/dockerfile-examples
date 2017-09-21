@@ -3,7 +3,7 @@
 node ('dockerserver') {
         stage "build"
         checkout scm
-        def customImage = docker.build("docker-image:${env.BUILD_ID}", "-f ./apache/Dockerfile")
+        def customImage = docker.build("docker-image:${env.BUILD_ID}", "-f ./apache/Dockerfile .")
         
         stage "test copying files"
         customImage.withRun('-v $PWD:/workspace -u root') {
