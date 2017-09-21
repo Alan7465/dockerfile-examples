@@ -8,6 +8,6 @@ node ('dockerserver') {
         stage "test copying files"
         customImage.withRun('-v $PWD:/app -u root') {
             /* Run some tests which require MySQL */
-            sh 'touch /app/test.html && ls' // can see that test.html is generated
+            sh 'ls /app && touch /app/test.html && ls /app' // can see that test.html is generated
         }
 }
