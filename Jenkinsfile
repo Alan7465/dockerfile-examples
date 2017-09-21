@@ -10,8 +10,8 @@ node ('dockerserver') {
             /* Run some tests which require MySQL */
             sh """
             ls /output
-            touch /app/test.html && ls /app
-            cp /app/test.html /output
+            touch /tmp/test.html && ls /tmp
+            cp /tmp/test.html /output
             """ 
         }
         archiveArtifacts artifacts: '*.html'
