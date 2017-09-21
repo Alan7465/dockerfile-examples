@@ -10,4 +10,5 @@ node ('dockerserver') {
             /* Run some tests which require MySQL */
             sh 'ls /app && touch /app/test.html && ls /app' // can see that test.html is generated
         }
+        archiveArtifacts artifacts: '*.html'
 }
