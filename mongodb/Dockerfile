@@ -18,3 +18,5 @@ RUN rm /usr/sbin/policy-rc.d
 CMD ["/usr/bin/mongod"]
 
 EXPOSE 27017
+[![Flattr this git repo](https://img.shields.io/badge/donate-flattr-red.svg)](https://flattr.com/submit/auto?user_id=komljen&url=https://github.com/komljen/dockerfile-examples
+&title=Dockerfile examples&language=&tags=github&category=software)
